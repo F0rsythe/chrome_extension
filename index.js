@@ -1,4 +1,4 @@
-function save_btn()
-{
-    console.log("Button Clicked");
-}
+let inputBtn = document.getElementById("input-btn")
+inputBtn.addEventListener("click", () =>{
+    console.log("Button clicked");
+})
