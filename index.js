@@ -2,6 +2,7 @@ let inputBtn = document.getElementById("input-btn");
 let mylinks = [];
 const inputEl = document.getElementById("input-el");
 const ulEl = document.getElementById("ul-el");
+const deletebtn = document.getElementById("delete-btn")
 let linkFromlocalstorage = JSON.parse(localStorage.getItem("mylinks"));
 
 if (linkFromlocalstorage)
@@ -10,6 +11,11 @@ if (linkFromlocalstorage)
   renderLeads();
 }
 
+deletebtn.addEventListener("dblclick", ()=>{
+  localStorage.clear();
+  mylinks = [];
+  renderLeads();
+});
 
 inputBtn.addEventListener("click", () => {
   mylinks.push(inputEl.value);
