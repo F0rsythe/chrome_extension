@@ -4,6 +4,7 @@ const inputEl = document.getElementById("input-el");
 const ulEl = document.getElementById("ul-el");
 const deletebtn = document.getElementById("delete-btn")
 let linkFromlocalstorage = JSON.parse(localStorage.getItem("mylinks"));
+const tabBtn = document.getElementById("tab-btn");
 
 if (linkFromlocalstorage)
 {
@@ -11,6 +12,13 @@ if (linkFromlocalstorage)
   render(mylinks);
 }
 
+tabBtn.addEventListener("click",()=>{
+  chrome.tabs.query({active:true, currentWindow:true},(tabs)=>{
+    mylinks.push(tabs[0].url);
+    localStorage.setItem("mylinks",JSON.stringify(mylinks))
+    render(mylinks);
+  })
+})
 deletebtn.addEventListener("dblclick", ()=>{
   localStorage.clear();
   mylinks = [];
